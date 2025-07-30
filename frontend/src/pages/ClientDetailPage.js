@@ -437,7 +437,7 @@ const ClientDetailPage = () => {
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-semibold">Messages</h2>
               <Button
-                to={`/messages/generate?client_id=${client.id}`}
+                to={`/messages/generate?client_id=${client._id || client.id}`}
                 variant="primary"
                 className="flex items-center"
               >
@@ -464,8 +464,8 @@ const ClientDetailPage = () => {
               <div className="space-y-4">
                 {messages?.map((message) => (
                   <Link
-                    key={message.id}
-                    to={`/messages/${message.id}`}
+                    key={message._id || message.id}
+                    to={`/messages/${message._id || message.id}`}
                     className="block p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                   >
                     <div className="flex justify-between items-start">

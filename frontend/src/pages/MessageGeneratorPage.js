@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation } from 'react-query';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { clientService } from '../services/clientService';
 import { productService } from '../services/productService';
@@ -20,11 +20,26 @@ import {
 
 const MessageGeneratorPage = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [currentStep, setCurrentStep] = useState(1);
   const [generatedMessage, setGeneratedMessage] = useState(null);
   const [error, setError] = useState(null);
   
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm();
+  
+  // Get URL parameters
+  const clientIdFromUrl = searchParams.get('client_id');
+  const productIdFromUrl = searchParams.get('product_id');
+  
+  // Set default values from URL parameters
+  useEffect(() => {
+    if (clientIdFromUrl) {
+      setValue('client_id', clientIdFromUrl);
+    }
+    if (productIdFromUrl) {
+      setValue('product_id', productIdFromUrl);
+    }
+  }, [clientIdFromUrl, productIdFromUrl, setValue]);
   
   // Get form values
   const selectedClientId = watch('client_id');
