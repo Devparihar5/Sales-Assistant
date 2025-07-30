@@ -1,0 +1,9 @@
+The favicon for this project is primarily implemented as an SVG file (favicon.svg).
+
+For production use, you should convert the SVG to various formats:
+1. favicon.ico - 16x16, 32x32, 48x48 sizes
+2. PNG versions of logo192.svg and logo512.svg
+
+You can use online tools like https://realfavicongenerator.net/ to generate all the necessary favicon files from the SVG files.
+
+For now, the SVG versions will work in most modern browsers.

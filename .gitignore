@@ -1,0 +1,6 @@
+.venv/
+Extra/
+.env
+__pycache__/
+test.py
+node_modules/
